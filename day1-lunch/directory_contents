@@ -1,0 +1,30 @@
+total 8
+-rw-r--r--  1 cmdb  staff   17 Aug 27 11:08 README.md
+drwxr-xr-x  3 cmdb  staff   96 Aug 27 11:33 day1-lunch
+drwxr-xr-x  5 cmdb  staff  160 Aug 27 11:29 day1-morning
+drwxr-xr-x  4 cmdb  staff  128 Aug 27 11:28 genomes
+drwxr-xr-x  3 cmdb  staff   96 Aug 27 11:26 rawdata
+drwxr-xr-x  3 cmdb  staff   96 Aug 27 11:28 results
+
+qbb2018-answers/day1-lunch:
+total 0
+-rw-r--r--  1 cmdb  staff  0 Aug 27 11:33 directory_contents
+
+qbb2018-answers/day1-morning:
+total 24
+-rw-r--r--  1 cmdb  staff  1268 Aug 27 11:24 day1-morning
+-rw-r--r--  1 cmdb  staff  1268 Aug 27 11:29 fis_transcripts
+-rw-r--r--  1 cmdb  staff  2406 Aug 27 11:12 fzo.gtf
+
+qbb2018-answers/genomes:
+total 641696
+-r--r--r--  1 cmdb  staff  182276780 Aug 27 11:28 BDGP6.Ensembl.81.gtf
+-r--r--r--  1 cmdb  staff  146266837 Aug 27 11:28 BDGP6.fa
+
+qbb2018-answers/rawdata:
+total 88064
+-rw-------  1 cmdb  staff  45088768 Aug 27 11:26 SRR072893.fastq
+
+qbb2018-answers/results:
+total 220224
+-r--r--r--@ 1 cmdb  staff  112751328 Aug 27 11:28 SRP004442.stringtie.tar.gz
