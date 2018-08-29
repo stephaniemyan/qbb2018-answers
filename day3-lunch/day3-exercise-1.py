@@ -19,7 +19,7 @@ for line in f:
     if len(fields) < 2:
         continue 
     elif fields[2] == "gene":
-        fields_last_col = line.strip().split("; ")
+        fields_last_col = fields[-1].strip().split("; ")
         for i, item in enumerate(fields_last_col):
             if ("gene_biotype" in fields_last_col[i] and "protein_coding" in fields_last_col[i]):
                 count += 1
