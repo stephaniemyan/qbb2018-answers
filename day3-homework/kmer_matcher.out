@@ -1,0 +1,100 @@
+Target sequence name: STRG.59.2 gene=STRG.59
+Target sequence start(s): 66
+Query sequence start: 10
+k-mer: CCAGGATTTGG
+
+Target sequence name: STRG.59.2 gene=STRG.59
+Target sequence start(s): 1316
+Query sequence start: 12
+k-mer: AGGATTTGGAT
+
+Target sequence name: STRG.59.2 gene=STRG.59
+Target sequence start(s): 1317
+Query sequence start: 13
+k-mer: GGATTTGGATT
+
+Target sequence name: STRG.59.2 gene=STRG.59
+Target sequence start(s): 1318
+Query sequence start: 14
+k-mer: GATTTGGATTT
+
+Target sequence name: STRG.59.2 gene=STRG.59
+Target sequence start(s): 24
+Query sequence start: 20
+k-mer: GATTTGTTGTG
+
+Target sequence name: STRG.59.2 gene=STRG.59
+Target sequence start(s): 5720, 15438, 16023
+Query sequence start: 102
+k-mer: GTTTGGCTGGC
+
+Target sequence name: STRG.59.2 gene=STRG.59
+Target sequence start(s): 5721, 15439, 16024
+Query sequence start: 103
+k-mer: TTTGGCTGGCT
+
+Target sequence name: STRG.59.2 gene=STRG.59
+Target sequence start(s): 719, 719
+Query sequence start: 121
+k-mer: CCAGCTGGAGG
+
+Target sequence name: STRG.59.2 gene=STRG.59
+Target sequence start(s): 273, 273
+Query sequence start: 125
+k-mer: CTGGAGGGCAT
+
+Target sequence name: STRG.59.2 gene=STRG.59
+Target sequence start(s): 552, 552
+Query sequence start: 165
+k-mer: TTTGCGCTGCC
+
+Target sequence name: STRG.59.2 gene=STRG.59
+Target sequence start(s): 2100
+Query sequence start: 166
+k-mer: TTGCGCTGCCT
+
+Target sequence name: STRG.59.2 gene=STRG.59
+Target sequence start(s): 1294
+Query sequence start: 190
+k-mer: ATAAATATTTC
+
+Target sequence name: STRG.59.2 gene=STRG.59
+Target sequence start(s): 1507
+Query sequence start: 207
+k-mer: TAGAAAATGTT
+
+Target sequence name: STRG.59.2 gene=STRG.59
+Target sequence start(s): 2100, 18
+Query sequence start: 252
+k-mer: TTTTGTTTTGC
+
+Target sequence name: STRG.59.2 gene=STRG.59
+Target sequence start(s): 19
+Query sequence start: 253
+k-mer: TTTGTTTTGCT
+
+Target sequence name: STRG.59.2 gene=STRG.59
+Target sequence start(s): 20
+Query sequence start: 254
+k-mer: TTGTTTTGCTT
+
+Target sequence name: STRG.59.2 gene=STRG.59
+Target sequence start(s): 21
+Query sequence start: 255
+k-mer: TGTTTTGCTTA
+
+Target sequence name: STRG.59.2 gene=STRG.59
+Target sequence start(s): 22
+Query sequence start: 256
+k-mer: GTTTTGCTTAC
+
+Target sequence name: STRG.59.2 gene=STRG.59
+Target sequence start(s): 198, 198
+Query sequence start: 299
+k-mer: ATCCGGGCAAA
+
+Target sequence name: STRG.59.2 gene=STRG.59
+Target sequence start(s): 10545, 10599
+Query sequence start: 305
+k-mer: GCAAAGTTTAA
+
