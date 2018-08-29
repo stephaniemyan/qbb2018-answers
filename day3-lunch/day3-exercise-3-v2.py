@@ -12,7 +12,7 @@ f = open(sys.argv[1])
 chrom = sys.argv[2]
 position = int(sys.argv[3])
 
-# To compare this_dist to; you want to start out really big
+# Values to compare this_dist to; you want to start out really big
 shortest_dist_coding = 999999999999
 shortest_dist_ncode = 999999999999
 
