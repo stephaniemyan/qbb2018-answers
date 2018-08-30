@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+
+"""
+Usage: ./day4-exercise-2.py <ctab_file1> <ctab_file2>
+
+Only report transcript when total FPKM > threshold
+"""
+
+import sys
+import os
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy
+
+name1 = str(sys.argv[1].split(os.sep)[-2])
+name2 = str(sys.argv[2].split(os.sep)[-2])
+
+df1 = pd.read_csv(sys.argv[1], sep="\t", index_col="t_name")
+df2 = pd.read_csv(sys.argv[2], sep="\t", index_col="t_name")
+
+fpkms1 = df1.loc[:, "FPKM"]
+fpkms2 = df2.loc[:, "FPKM"]
+
+log_df1 = np.log(fpkms1 + 1)
+log_df2 = np.log(fpkms2 + 1)
+
+# Fit FPKM data to a linear function
+polyfit_coeffs = np.polyfit(log_df1, log_df2, 1)
+
+x_values = np.linspace(min(log_df1),max(log_df1))
+y_function = np.poly1d(polyfit_coeffs)
+
+fig, (ax) = plt.subplots()
+ax.scatter(log_df1, log_df2, alpha = 0.07)
+ax.set_xlabel("log of FPKMs for " + name1)
+ax.set_ylabel("log of FPKMs for " + name2)
+ax.set_xscale('log')
+ax.set_yscale('log')
+plt.plot(x_values, y_function(x_values), 'k')
+fig.savefig("scatter.png")
+plt.close()
+
+# x = np.linspace
+# y = np.poly1d
+# ax.plot(x.y)
