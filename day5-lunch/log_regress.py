@@ -54,7 +54,6 @@ print(results.summary())
 new_y = results.fittedvalues
 r = new_y - Y
 
-# For the purpose of aesthetic, the xlim is set smaller than this histogram's default range
 fig, ax = plt.subplots(figsize=(8, 6))
 ax.hist(r, bins=500)
 ax.set_ylabel("Frequency")
