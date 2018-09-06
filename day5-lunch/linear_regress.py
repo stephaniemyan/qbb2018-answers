@@ -54,8 +54,8 @@ r = new_y - Y
 # For the purpose of aesthetic, the xlim is set smaller than this histogram's default range
 # This cuts out one small group of residuals in the -6000s or so. All the other residuals lie around 0
 fig, ax = plt.subplots(figsize=(8, 6))
-ax.hist(r, bins=1000)
-ax.set_xlim(-500,500)
+ax.hist(r, bins=3000)
+ax.set_xlim(-200,200)
 ax.set_ylabel("Frequency")
 ax.set_xlabel("Residuals")
 ax.set_title("Multiple linear regression residuals")

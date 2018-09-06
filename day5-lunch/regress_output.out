@@ -1,27 +1,28 @@
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                   FPKM   R-squared:                       0.044
-Model:                            OLS   Adj. R-squared:                  0.043
-Method:                 Least Squares   F-statistic:                     315.9
-Date:                Fri, 31 Aug 2018   Prob (F-statistic):               0.00
-Time:                        15:43:13   Log-Likelihood:            -2.0461e+05
-No. Observations:               34718   AIC:                         4.092e+05
-Df Residuals:                   34713   BIC:                         4.093e+05
+Dep. Variable:                   FPKM   R-squared:                       0.010
+Model:                            OLS   Adj. R-squared:                  0.009
+Method:                 Least Squares   F-statistic:                     66.74
+Date:                Thu, 06 Sep 2018   Prob (F-statistic):           1.25e-69
+Time:                        00:34:12   Log-Likelihood:            -2.0482e+05
+No. Observations:               34718   AIC:                         4.096e+05
+Df Residuals:                   34712   BIC:                         4.097e+05
 Df Model:                           5                                         
 Covariance Type:            nonrobust                                         
 ==============================================================================
                  coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------
-H3K27ac       -0.6396      0.116     -5.496      0.000      -0.868      -0.411
-H3K27me3      -0.7273      0.073     -9.935      0.000      -0.871      -0.584
-H3K4me1        1.0475      0.061     17.088      0.000       0.927       1.168
-H3K4me3        1.3394      0.073     18.451      0.000       1.197       1.482
-H3K9ac         0.0025      0.036      0.070      0.944      -0.068       0.073
+const          9.7337      0.519     18.741      0.000       8.716      10.752
+H3K27ac       -0.5220      0.144     -3.633      0.000      -0.804      -0.240
+H3K27me3      -0.2857      0.098     -2.905      0.004      -0.478      -0.093
+H3K4me1        0.3168      0.089      3.553      0.000       0.142       0.492
+H3K4me3        1.0782      0.088     12.297      0.000       0.906       1.250
+H3K9ac        -0.0608      0.098     -0.622      0.534      -0.252       0.131
 ==============================================================================
-Omnibus:                    87060.859   Durbin-Watson:                   1.889
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):       2576979782.629
-Skew:                          27.352   Prob(JB):                         0.00
-Kurtosis:                    1336.579   Cond. No.                         3.40
+Omnibus:                    86927.559   Durbin-Watson:                   1.875
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):       2490188449.162
+Skew:                          27.260   Prob(JB):                         0.00
+Kurtosis:                    1313.899   Cond. No.                         11.4
 ==============================================================================
 
 Warnings:
