@@ -30,7 +30,8 @@ model = sm.OLS(Y,X)
 results = model.fit()
 results.params
 results.tvalues
-sys.stdout()
+# Print summary to output R^2, p-value, coefficients, etc
+print(results.summary())
 
 
 # Make histogram
@@ -47,6 +48,6 @@ ax.hist(r, bins=1000)
 ax.set_xlim(-500,500)
 ax.set_ylabel("Frequency")
 ax.set_xlabel("Residuals")
-ax.set_title("Linear regression residuals")
+ax.set_title("Multiple linear regression residuals")
 fig.savefig("residuals.png")
 plt.close(fig)
