@@ -54,8 +54,11 @@ print(results.summary())
 new_y = results.fittedvalues
 r = new_y - Y
 
+# For the purpose of aesthetic, the xlim is set slightly smaller than this histogram's default range
+# This cuts out one small group of residuals in the -8s or so. All the other residuals lie around 0
 fig, ax = plt.subplots(figsize=(8, 6))
-ax.hist(r, bins=500)
+ax.hist(r, bins=300)
+ax.set_xlim(-6,6)
 ax.set_ylabel("Frequency")
 ax.set_xlabel("Residuals")
 ax.set_title("Linear regression residuals")
