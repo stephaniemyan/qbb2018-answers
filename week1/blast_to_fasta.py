@@ -34,3 +34,9 @@ for line in sys.stdin:
     split_line = line.rstrip("\r\n").split("\t")
     print(">" + split_line[0] + "\n" + split_line[1] + "\n")
     
+    
+# To translate the new BLAST.fa file to amino acids, use transeq from emboss in command line:
+# transeq <BLAST.fa> <output name>
+
+# To align amino acid sequences, use MAFFT:
+# mafft <translated_blast_file.fa> > <output name>
