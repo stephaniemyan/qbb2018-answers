@@ -22,7 +22,9 @@ This creates two lists. One lists the numbers of synonymous changes at each codo
 The other lists the numbers of nonsynonymous changes.
 
 PART 3
-Run z-test
+Calculate dN - dS for each position, and calculate the z value of that difference to 
+determine if it's significantly different from the other dN - dS values. The null hypothesis
+is dN = dS, or no selection; positions with significant z values are undergoing selection.
 
 PART 4
 Plot dN/dS vs. codon position. Highlight sites under positive selection in red.
@@ -30,6 +32,7 @@ Plot dN/dS vs. codon position. Highlight sites under positive selection in red.
 
 import sys
 import fasta
+from math import sqrt
 import numpy as np
 import matplotlib.pyplot as plt
 plt.style.use('ggplot')
@@ -95,21 +98,24 @@ query_codons = all_nuc_aligns[0]
 # Create lists to count the synonymous and nonsynonymous mutations in
 list_of_dS = [0] * len(query_aas)
 list_of_dN = [0] * len(query_aas)
+# Create a list to count the # of changes, synonymous or nonsynonymous, at each position
+count = [0] * len(query_aas)
 
-# Count keeps track of how many positions there are across all the alignments. Is this even necessary? Probably not
-count = 0
-    
+# count_indels keeps track of all the --- codons in the query sequence. This is just for fun
+count_indels = 0
+
 # Iterate through each alignment in the master list
 for codons_list, aas_list in zip(all_nuc_aligns[1:], all_aa_aligns[1:]):
     
     # Iterate through every AA position in the alignment
     for i in range(0, len(codons_list)):
         
-        # If the query codon is an indel, don't use it
-        #if query_codons[i] = "---":
-        #    continue
+        # If the query codon is an indel, don't use it, and increment the indels count
+        if query_codons[i] == "---":
+            count_indels += 1
         # If the current codon does not match the corresponding query codon...
         elif codons_list[i] != query_codons[i]:
+            count[i] += 1
             # ...but the current AA matches the query AA, add to the count of synonymous mutations at this position
             if aas_list[i] == query_aas[i]:
                 list_of_dS[i] += 1
@@ -117,13 +123,8 @@ for codons_list, aas_list in zip(all_nuc_aligns[1:], all_aa_aligns[1:]):
             else:
                 list_of_dN[i] += 1
         
-        # Increment the other count (for all positions across all alignments)
-        count += 1
-        
 # Here are a bunch of print statements for troubleshooting/checking things
-# print(count)
-# print(list_of_dS)
-# print(list_of_dN)
+print("Total indels in all alignments = " + str(count_indels))
 print("Number of codons = " + str(len(query_codons)))
 print("Number of AAs = " + str(len(query_aas)))
 print("Number of nuc alignments = " + str(len(all_nuc_aligns)))
@@ -137,44 +138,72 @@ print("Number of synonymous + nonsynonymous = " + str(sum(list_of_dS) + sum(list
 
 
 # PART 3
-# Z-test. I don't even know
+# Z-test each dN - dS value to find out if it is significantly different from expectation
+# Null hypothesis: dN - dS = 0, or no selection. Calculate z for each position, and determine if the z is significant at p < 0.001
+# If a site is undergoing significant positive selection, we expect dN > dS (mutations that change the AA are encouraged), so dN - dS should be negative
 
-result = stests.ztest([list_of_dS[0], list_of_dN[0]])
-#print(result)
-pvalue = result[1]
-#print(pvalue)
+# Create a list of differences for dN - dS
+list_of_difference = []
+for i in range(len(list_of_dS)):
+    difference = (list_of_dN[i] - list_of_dS[i])
+    list_of_difference.append(difference)
+
+# Create a list of dN/dS ratios by dividing the corresponding dN and dS numbers
+# This is what is actually being plotted
+list_of_ratios = []
+for i in range(len(list_of_dS)):
+    # I'm adding 1 to the denominator avoid dividing by 0. It's pretty sus but w/e
+    ratio = (list_of_dN[i])/(list_of_dS[i] + 1)
+    list_of_ratios.append(ratio)
+
+# Calculate z score for every dN - dS difference. These z scores will tell you how far from the mean (in std devs) a particular dN - dS difference is
+# z = (x - mu) / sigma
+# x: dN - dS value at that position
+# mu: "Population mean" - for some reason in this case it's the null hypothesis, 0
+# sigma: Standard error - stdev of all the dN - dS values, divided by the # of samples (i.e. # of changes at that position)
+
+# For plotting purposes, make dictionaries to store the points that undergo significant positive selection and the points that don't
+pos_selection = {}
+other = {}
+
+std = np.std(list_of_difference)
+for i, difference in enumerate(list_of_difference):
+    
+    # Skip positions that have no changes
+    if count[i] == 0:
+        continue
+        
+    else:
+        # Calculate stderror and z value
+        stderror = std / sqrt(count[i])
+        z = (difference - 0)/stderror
+        
+        # p < 0.001, so significant z values are z < -3.29
+        # If this dN - dS is significant, add it to the dictionary of positive selection positions
+        if z < -3.29:
+            pos_selection[i] = np.log(list_of_ratios[i])
+        # Otherwise, add it to the list of other positions
+        else:
+            other[i] = np.log(list_of_ratios[i])
 
 
 
 # PART 4
 # Plot dN/dS ratios vs. codon position
 
-# Create a list of dN/dS ratios by dividing the corresponding dN and dS numbers
-list_of_ratios = []
-for i in range(len(list_of_dS)):
-    # I'm adding 1 to the denominator avoid dividing by 0. It's pretty sus but w/e
-    ratio = (list_of_dN[i])/(list_of_dS[i] + 1)
-    list_of_ratios.append(ratio)
-    
-# This is the version for subtracting dN - dS. I probably won't need it but idk what James Taylor wants from me right now
-#list_of_difference = []
-    #difference = (list_of_dN[i] - list_of_dS[i])
-    #list_of_difference.append(difference)
-#print(list_of_ratios)
-
-x = range(0,len(list_of_ratios))
-y = list_of_ratios
-
-fig1, ax1 = plt.subplots()
-ax1.scatter(x,y, alpha=0.3, s=2, color="blue")
-ax1.set_xlabel("Codon position")
-ax1.set_ylabel("dN/dS ratio")
-# ax1.set_xscale('log')
-# ax1.set_yscale('log')
-ax1.set_title("dN vs dS")
-fig1.savefig("dN_dS.png")
-plt.close(fig1)
-
-
+fig, ax = plt.subplots(figsize=(20, 8))
+ax.scatter( pos_selection.keys(), pos_selection.values(), 
+            alpha=1, s=6, color="mediumvioletred", label="Positive selection"
+            )
+ax.scatter( other.keys(), other.values(), 
+            alpha=1, s=6, color="royalblue", label="Negative or no selection"
+            )
+ax.set_xlabel("Codon position")
+ax.set_ylabel("log(dN/dS ratio)")
+ax.set_title("Ratio of nonsynonymous to synonymous changes at each codon")
+ax.legend(bbox_to_anchor=(1.01,0.52), loc=2, borderaxespad=0.)
+plt.tight_layout()
+fig.savefig("dN_dS.png")
+plt.close(fig)
 
 
