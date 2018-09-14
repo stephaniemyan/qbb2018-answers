@@ -7,27 +7,31 @@ Usage: ./nuc_align.py <BLAST output> <MAFFT output>
 <MAFFT output> Provides amino acid alignment
 
 PART 1
-For each aligned sequence, this script considers both the AA alignment and the original DNA 
-sequence from BLAST. Wherever there is a gap in the AA alignment, it inserts three gaps in 
-the DNA sequence.
+For each aligned sequence, consider both the AA alignment and the original DNA sequence from 
+BLAST. Wherever there is a gap in the AA alignment, insert three gaps in the DNA sequence.
 
 This creates two lists of lists. The outer list contains each individual AA or DNA alignment.
 Each individual alignment is a list of codons or AAs.
 
 PART 2
-The script counts the number of synonymous and nonsynonymous mutations at each codon position. 
-Synonymous - codon changes, AA stays the same; nonsynonymous - codon changes, AA also changes.
+Count the number of synonymous and nonsynonymous mutations at each codon position. Synonymous 
+- the codon changes, but AA stays the same; nonsynonymous - the codon changes, and AA also 
+changes.
 
 This creates two lists. One lists the numbers of synonymous changes at each codon position.
 The other lists the numbers of nonsynonymous changes.
 
 PART 3
-Calculate dN - dS for each position, and calculate the z value of that difference to 
-determine if it's significantly different from the other dN - dS values. The null hypothesis
-is dN = dS, or no selection; positions with significant z values are undergoing selection.
+Create a list of dN/dS ratios for each position, and a list of dN - dS values for each 
+position.
+
+Using the dN - dS for a particular position, calculate the z value of that difference to 
+determine if it's significantly different from all the other dN - dS values. The null 
+hypothesis is dN = dS, or no selection; positions with significant z values are undergoing 
+selection.
 
 PART 4
-Plot dN/dS vs. codon position. Highlight sites under positive selection in red.
+Plot dN/dS vs. codon position. Color sites under positive selection.
 """
 
 import sys
