@@ -7,7 +7,7 @@ Usage: ./lastz.py <LASTZ file>
 sequence's name, zstart, and zend.
 
 Produces a dotplot of each contig's alignment to the reference genome. Every contig has a 
-separate position on the x-axis (to account for duplicate coverage of one reference sequence 
+separate space on the x-axis (to account for duplicate coverage of one reference sequence 
 site), and the script graphs position in contig sequence vs. position in reference genome.
 
 For more aesthetic results, pre-sort the LASTZ file so that the contigs are ordered by start 
@@ -45,7 +45,7 @@ for line in f:
     end = int(fields[2])
     length = end - start
     
-    # x range is the next spot on the x-axis, long enough for the whole contig
+    # x range is the next space on the x-axis, long enough for the whole contig
     x = np.linspace(x_pos,x_pos+length)  
     # y range is between this contig's start and end positions on the reference genome
     y = np.linspace(start,end)
