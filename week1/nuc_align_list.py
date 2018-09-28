@@ -148,6 +148,7 @@ print("Number of synonymous + nonsynonymous = " + str(sum(list_of_dS) + sum(list
 
 # Create a list of differences for dN - dS
 list_of_difference = []
+
 for i in range(len(list_of_dS)):
     difference = (list_of_dN[i] - list_of_dS[i])
     list_of_difference.append(difference)
