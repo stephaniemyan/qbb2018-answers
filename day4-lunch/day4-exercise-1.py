@@ -2,7 +2,6 @@
 
 """
 Usage: ./day4-exercise-1.py <threshold> <ctab_file1> <ctab_file2> ... <ctab_filen>
-
 Only report transcript when total FPKM > threshold
 """
 
