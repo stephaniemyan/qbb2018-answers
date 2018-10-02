@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 
 """
-Usage: ./make_plot.py <VCF file 1> <VCF file 2>
+Usage: ./make_plot.py <VCF file>
 
-<VCF file 1> An annotated VCF file, output from snpEff
-<VCF file 2> An annotated VCF file, output from snpEff, with GQ values. I had to do this because
-my original VCF file didn't include genotype quality scores, so I had to hard-code this extra
-file in
+<VCF file> An annotated VCF file, output from snpEff. This file needs to have the ## comment
+fields stripped from it beforehand, in order to be read as a dataframe. (You can use the 
+parse_vcf.py script that I also uploaded to GitHub.)
 
 Makes a multi-panel plot from a snpEff output file, showing:
 - The read depth distribution across each variant
