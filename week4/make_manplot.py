@@ -9,7 +9,7 @@ Produce a Manhattan plot, showing association of SNPs with a specific phenotype,
 .qassoc file. Highlight SNPs with p-values less than 10^-5. The chromosomes will be plotted 
 out of order because their names are Roman numerals and pandas sorts them alphabetically.
 
-I'd like to thank Elad Joseph on StackOverflow for the dataframe idea, and Rebecca for working
+I'd like to thank Elad Joseph on StackOverflow for the dataframe idea, and Rebekka for working
 with me. I'd also like to thank Peter because I used a bunch of his dataframe plotting code 
 from the week 5 review.
 """
@@ -55,27 +55,19 @@ for f in sys.argv[1:]:
     # Count keeps track of which position you're currently at
     count = 0
 
-    # chr_starts is a list of the index values at which chromosomes are beginning
-    # This is to obtain values for the x-axis labels
-    chr_starts = []
-
     # Loop through the list of BP positions
     for i, pos in enumerate(bp):
-        # At the very first BP position, create a 0 index value in the positions and chr_starts lists
+        # At the very first BP position, create a 0 index value in the positions list
         if i == 0:
             positions.append(0)
-            chr_starts.append(0)
-        # This also adds the very last bp for xtick labeling purposes
-        elif i == len(bp):
-            chr_starts.append(count)
         # If your current BP value is less than the previous one, this indicates that a new chromosome has started
         # So you want this chr's indexing to start right after the previous one ended
         # Which means your next index position is just 1 more than the previous one
         elif bp[i] < bp[i-1]:
             positions.append(count + 1)
             count += 1
-            chr_starts.append(count+1)
-        # If you're in the middle of a chromosome, you want to put your next SNP 
+        # Otherwise add the location for your new SNP
+        # The difference in position between the previous SNP and this one should = how far your new SNP is from the previous position
         else:
             difference = bp[i] - bp[i-1]
             positions.append(count + difference)
