@@ -1,0 +1,10 @@
+sort -k 5 -r -n ER4_peaks.narrowPeak > ER4_peaks_sorted.narrowPeak
+head -100 ER4_peaks_sorted.narrowPeak > ER4_peaks_high.narrowPeak
+
+bedtools getfasta -fi ../week6/chr19.fa -bed ER4_peaks_high.narrowPeak > fasta.fa
+
+meme-chip -db motif_databases/JASPAR/JASPAR_CORE_2016.meme fasta.fa -dna -meme-maxw 20 -o meme-chip
+
+meme-chip/meme_out/
+
+bedtools intersect -a ER4_peaks_high.narrowPeak -wa -b meme-chip/fimo_out_1/fimo.gff -wb > bedtools.out
