@@ -4,7 +4,7 @@ in the original, unannotated t-SNE plot.
 0
 1 - SST interneurons: Express Gad1, meaning that they're GABAergic interneurons. This is the only cluster that has Sst and Lhx6 expression, so I guessed that they're the SST subset of the GABAergic interneurons
 2
-3 - Glial cells: Express Hcls1
+3
 4
 5
 6
@@ -23,4 +23,4 @@ in the original, unannotated t-SNE plot.
 19 - Oligodendrocytes: Express Sox17
 20
 21
-22
+22 - Glial cells: Express Hcls1
