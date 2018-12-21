@@ -1,0 +1,11 @@
+Icam2 - INTERCELLULAR ADHESION MOLECULE 2
+Probably something related to changing cell-cell adhesion between stages. Maybe related to cell migration too?
+
+Naga - N-ACETYLGLUCOSAMINE-6-PHOSPHATE DEACETYLASE (PTHR11113:SF14) or Alpha-N-acetylgalactosaminidase
+Both of these are sugar hydrolases. They're probably involved in a metabolic change associated with shifting to a different cell type.
+
+Spry4 - Protein sprouty homolog 4
+Has MAP kinase activity and is involved in signal transduction. Most likely helps relay signals for differentiation.
+
+Osr2 - Protein odd-skipped-related 2
+Transcription factor, regulates RNA Pol II transcription. Probably helps induce/suppress genes required for differentiation.
